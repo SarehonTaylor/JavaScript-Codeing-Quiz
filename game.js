@@ -1,5 +1,5 @@
 const question = document.getElementById('question');
-const choices = Array.from(document.getElementsByClassName('choice-text'));
+const choicesEl = document.getElementsById('choice');
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
@@ -11,17 +11,6 @@ let availableQuesions = [];
 
 let questions = [];
 
-fetch('questions.json')
-    .then((res) => {
-        return res.json();
-    })
-    .then((loadedQuestions) => {
-        questions = loadedQuestions;
-        startGame();
-    })
-    .catch((err) => {
-        console.error(err);
-    });
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
