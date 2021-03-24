@@ -2,6 +2,7 @@ let currentQuestionindex = 0;
 let time = questions.length * 15;
 let timerid;
 
+
 const question = document.getElementById('question');
 const choicesEl = document.getElementsById('choice');
 const timerEl = document.getElementsById('time');
@@ -26,12 +27,22 @@ let questions = [];
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
 
-startGame = () => {
-    questionCounter = 0;
-    score = 0;
-    availableQuesions = [...questions];
-    getNewQuestion();
-};
+// startGame = () => {
+//     questionCounter = 0;
+//     score = 0;
+//     availableQuesions = [...questions];
+//     getNewQuestion();
+// };
+function startGame() {
+let startscreenEl = document.getElementById('start')
+startscreenEl.setAttribute("class", "hide")
+
+questionsEl.removeAttribute("class")
+timerid = setInterval(clocktick, 1000)
+timerEl.textContent = time
+getNewQuestion()
+
+}
 
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
