@@ -1,5 +1,10 @@
 const question = document.getElementById('question');
 const choicesEl = document.getElementsById('choice');
+const timerEl = document.getElementsById('time')
+const submitbutton = document.getElementsById('submit')
+const sart = document.getElementsById('start')
+
+
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
