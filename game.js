@@ -9,6 +9,7 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
+let penalty = 10
 let timer;
 let countdowntimer = 5;
 
@@ -30,13 +31,17 @@ function startTimer() {
     countdowntimer = countdowntimer - 1;
     runtimeEl.innerText=countdowntimer;
     if (countdowntimer < 1) clearInterval(timer);
+
+    if (countdowntimer < 1) {
+      return window.location.assign("/end.html");
+    }
    
     //console.log(countdowntimer); clear interval logic
   }, 1000);
 }
 
 //CONSTANTS
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 0;
 const MAX_QUESTIONS = 3;
 
 startGame = () => {
@@ -47,6 +52,7 @@ startGame = () => {
   getNewQuestion();
 };
 
+
 getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
@@ -55,8 +61,7 @@ getNewQuestion = () => {
   }
   questionCounter++;
   progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
-  //Update the progress bar
-  // progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+
 
   const questionIndex = Math.floor(Math.random() * availableQuesions.length);
   currentQuestion = availableQuesions[questionIndex];
@@ -84,6 +89,9 @@ choices.forEach((choice) => {
 
     if (classToApply === "correct") {
       incrementScore(CORRECT_BONUS);
+    }
+    if (classToApply === "incorrect") {
+      (countdowntimer -= 10)
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
