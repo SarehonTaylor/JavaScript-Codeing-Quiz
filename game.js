@@ -11,7 +11,7 @@ let questionCounter = 0;
 let availableQuesions = [];
 let penalty = 10
 let timer;
-let countdowntimer = 5;
+let countdowntimer = 75;
 
 let questions = [];
 
@@ -33,7 +33,7 @@ function startTimer() {
     if (countdowntimer < 1) clearInterval(timer);
 
     if (countdowntimer < 1) {
-      return window.location.assign("/end.html");
+      return window.location.assign("end.html");
     }
    
     //console.log(countdowntimer); clear interval logic
@@ -57,7 +57,7 @@ getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
     //go to the end page
-    return window.location.assign("/end.html");
+    return window.location.assign("end.html");
   }
   questionCounter++;
   progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
