@@ -41,8 +41,8 @@ function startTimer() {
 }
 
 //CONSTANTS
-const CORRECT_BONUS = 0;
-const MAX_QUESTIONS = 3;
+const CORRECT_BONUS = 15;
+const MAX_QUESTIONS = 5;
 
 startGame = () => {
   questionCounter = 0;
